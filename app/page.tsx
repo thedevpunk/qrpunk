@@ -94,66 +94,74 @@ export default function Home() {
                 placeholder="Type in your url"
               />
             </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="size">Size</Label>
-              <Input
-                id="size"
-                name="size"
-                value={code.size}
-                onChange={(event) =>
-                  setCode({ ...code, size: Number(event.currentTarget.value) })
-                }
-                placeholder="Size in px"
-              />
+            <div className="flex gap-4">
+              <div className="flex flex-grow flex-col space-y-1.5">
+                <Label htmlFor="size">Size</Label>
+                <Input
+                  id="size"
+                  name="size"
+                  value={code.size}
+                  onChange={(event) =>
+                    setCode({
+                      ...code,
+                      size: Number(event.currentTarget.value),
+                    })
+                  }
+                  placeholder="Size in px"
+                />
+              </div>
+              <div className="flex flex-grow flex-col space-y-1.5">
+                <Label htmlFor="level">Level</Label>
+                <Select
+                  name="level"
+                  value={code.level}
+                  onValueChange={(value) => setCode({ ...code, level: value })}
+                >
+                  <SelectTrigger id="level">
+                    <SelectValue placeholder="Select" />
+                  </SelectTrigger>
+                  <SelectContent position="popper">
+                    <SelectItem value="L">L</SelectItem>
+                    <SelectItem value="M">M</SelectItem>
+                    <SelectItem value="Q">Q</SelectItem>
+                    <SelectItem value="H">H</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="fgColor">Foreground Color</Label>
-              <Input
-                id="fgColor"
-                name="fgColor"
-                value={code.fgColor}
-                onChange={(event) =>
-                  setCode({ ...code, fgColor: event.currentTarget.value })
-                }
-                placeholder="Color in Hex or 'transparent'"
-              />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="bgColor">Background Color</Label>
-              <Input
-                id="bgColor"
-                name="bgColor"
-                value={code.bgColor}
-                onChange={(event) =>
-                  setCode({ ...code, bgColor: event.currentTarget.value })
-                }
-                placeholder="Color in Hex or 'transparent'"
-              />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="level">Level</Label>
-              <Select
-                name="level"
-                value={code.level}
-                onValueChange={(value) => setCode({ ...code, level: value })}
-              >
-                <SelectTrigger id="level">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent position="popper">
-                  <SelectItem value="L">L</SelectItem>
-                  <SelectItem value="M">M</SelectItem>
-                  <SelectItem value="Q">Q</SelectItem>
-                  <SelectItem value="H">H</SelectItem>
-                </SelectContent>
-              </Select>
+            <div className="flex gap-4">
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="fgColor">Foreground Color</Label>
+                <Input
+                  id="fgColor"
+                  name="fgColor"
+                  value={code.fgColor}
+                  onChange={(event) =>
+                    setCode({ ...code, fgColor: event.currentTarget.value })
+                  }
+                  placeholder="Color in Hex or 'transparent'"
+                />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="bgColor">Background Color</Label>
+                <Input
+                  id="bgColor"
+                  name="bgColor"
+                  value={code.bgColor}
+                  onChange={(event) =>
+                    setCode({ ...code, bgColor: event.currentTarget.value })
+                  }
+                  placeholder="Color in Hex or 'transparent'"
+                />
+              </div>
             </div>
           </div>
           <div
             ref={codeRef}
-            className="p-6 bg-gradient-to-r from-teal-400 to-emerald-400 rounded"
+            className="aspect-square flex items-center justify-center p-6 bg-gradient-to-r from-teal-400 to-emerald-400 rounded"
           >
             <QRCode
+              className="w-full h-full max-w-[320px] max-h-[320px]"
               value={code.url}
               fgColor={code.fgColor}
               bgColor={code.bgColor}
