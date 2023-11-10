@@ -71,8 +71,8 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-12">
-      <Card className="w-full max-w-[350px]">
+    <main className="flex min-h-screen flex-col items-center justify-between p-0 sm:p-12">
+      <Card className="w-full max-w-[640px]">
         <CardHeader>
           <div className="flex gap-1">
             <QrCode className="text-emerald-600" />
@@ -130,7 +130,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="flex flex-col space-y-1.5">
+              <div className="flex flex-grow flex-col space-y-1.5">
                 <Label htmlFor="fgColor">Foreground Color</Label>
                 <Input
                   id="fgColor"
@@ -142,7 +142,7 @@ export default function Home() {
                   placeholder="Color in Hex or 'transparent'"
                 />
               </div>
-              <div className="flex flex-col space-y-1.5">
+              <div className="flex flex-grow flex-col space-y-1.5">
                 <Label htmlFor="bgColor">Background Color</Label>
                 <Input
                   id="bgColor"
