@@ -72,7 +72,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-0 sm:p-12">
-      <Card className="w-full sm:max-w-[400px]">
+      <Card className="w-full sm:max-w-[400px] border-0 sm:border">
         <CardHeader>
           <div className="flex gap-1">
             <QrCode className="text-emerald-600" />
@@ -158,7 +158,7 @@ export default function Home() {
           </div>
           <div
             ref={codeRef}
-            className="aspect-square flex items-center justify-center p-6 bg-gradient-to-r from-teal-400 to-emerald-400 rounded"
+            className="w-full h-auto aspect-square flex items-center justify-center p-6 bg-gradient-to-r from-teal-400 to-emerald-400 rounded"
           >
             <QRCode
               className="w-full h-full max-w-[320px] max-h-[320px]"
